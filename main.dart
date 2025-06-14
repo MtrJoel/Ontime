@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_hero_app/admins/rutaScreens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Screens(),
+      title: 'Selección de Rol',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Screens(),
+        '/admin': (context) => Rutascreens(),
+      },
     );
   }
 }
@@ -39,17 +41,17 @@ class _ScreensState extends State<Screens> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-            onPressed: () {},
-            child: Text("Supervisor"),
+            onPressed: () {
+              Navigator.pushNamed(context, '/admin');
+            },
             style: ElevatedButton.styleFrom(minimumSize: Size(200, 50)),
+            child: Text("Supervisor"),
           ),
           SizedBox(height: 20.25),
           ElevatedButton(
-            onPressed: () {}, 
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(minimumSize: Size(200, 50)),
             child: Text("Chofer"),
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(200, 50)
-            ),
           )
         ],
       ),
